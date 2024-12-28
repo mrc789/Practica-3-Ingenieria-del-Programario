@@ -1,6 +1,11 @@
 package services;
 
 import micromobility.JourneyService;
+import micromobility.PMVehicle;
+import Data.*;
+
+import java.net.ConnectException;
+import java.time.LocalDateTime;
 
 /**
  * External services involved in the shared micromobility system
