@@ -1,4 +1,4 @@
-package Services.smartfeatrures;
+package services.smartfeatrures;
 
 /**
  * External services involved in the functioning of some features
