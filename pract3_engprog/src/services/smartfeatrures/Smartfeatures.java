@@ -1,4 +1,7 @@
-package Services.smartfeatrures;
+package services.smartfeatrures;
+
+import java.net.ConnectException;
+import Data.*;
 
 /**
  * External services involved in the functioning of some features
