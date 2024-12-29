@@ -2,6 +2,8 @@ package micromobility;
 
 import Data.StationID;
 
+import java.net.ConnectException;
+
 
 public class JourneyRealizeHandler {
         // The class members

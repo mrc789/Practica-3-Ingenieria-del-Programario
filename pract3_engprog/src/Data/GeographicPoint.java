@@ -88,6 +88,6 @@ final public class GeographicPoint {
 
     // If valid, print confirmation
     System.out.println("UserAccount successfully created: " + userId);
-}
     }
 }
+
