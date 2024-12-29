@@ -8,11 +8,15 @@ public final class UserAccount {
     private static final String FORMAT = "USER-[A-Z0-9]{5}";
 
     public UserAccount(String id) {
-        if (id == null || !id.matches(FORMAT)) {
-            throw new IllegalArgumentException("Invalid UserAccount format. Expected format: 'USER-XXXXX'");
+        if (id == null) {
+            throw new IllegalArgumentException("UserAccount ID cannot be null.");
+        }
+        if (!id.matches(FORMAT)) {
+            throw new IllegalArgumentException("Invalid UserAccount format: '" + id + "'. Expected format: 'USER-XXXXX'");
         }
         this.id = id;
     }
+
 
     public String getId() {
         return id;
@@ -35,4 +39,9 @@ public final class UserAccount {
     public String toString() {
         return "UserAccount{" + "id='" + id + '\'' + '}';
     }
+
+    public static boolean isValid(String id) {
+        return id != null && id.matches(FORMAT);
+    }
+
 }
