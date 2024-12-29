@@ -6,3 +6,10 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Ignore IntelliJ decompiled stub files if they end with .decompiled
+*.decompiled
+*decompiled.java
+/out/
+/build/
+
+
