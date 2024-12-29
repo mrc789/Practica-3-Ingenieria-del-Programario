@@ -11,8 +11,14 @@ final public class GeographicPoint {
         this.latitude = lat;
         this.longitude = lon;
     }
+
+    // Método getter para latitud
     public float getLatitude () { return latitude; }
+
+    // Método getter para longitud
     public float getLongitude () { return longitude; }
+
+    // Método equals para comparar objetos GeographicPoint
     @Override
     public boolean equals (Object o) {
         boolean eq;
@@ -22,6 +28,8 @@ final public class GeographicPoint {
         eq = ((latitude == gP.latitude) && (longitude == gP.longitude));
         return eq;
     }
+
+    // Método para generar un hash único basado en los valores
     @Override
     public int hashCode () {
         final int prime = 31;
@@ -36,6 +44,7 @@ final public class GeographicPoint {
                 "longitude='" + longitude + '}';
     }
 
+    // Método para validar un StationID
     public void StationId (Object o){
 
         if (o == null) {
@@ -51,6 +60,7 @@ final public class GeographicPoint {
     System.out.println("StationID successfully created: " + stationID);
     }
 
+    // Método para validar un VehicleID
     public void VehicleId (Object o){
 
         if (o == null) {
@@ -71,6 +81,7 @@ final public class GeographicPoint {
        System.out.println("VehicleID successfully created: " + id);
        }
 
+    // Método para validar un UserAccount
     public void UserAccount (Object o){
         if (o == null) {
         throw new IllegalArgumentException("Input cannot be null");
