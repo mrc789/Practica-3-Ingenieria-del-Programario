@@ -14,11 +14,15 @@ public final class StationID implements Serializable {
     private static final String DEFAULT_FORMAT = "ST-[A-Z0-9]{3}";
 
     public StationID(String id) {
-        if (id == null || !id.matches(DEFAULT_FORMAT)) {
-            throw new IllegalArgumentException("Invalid StationID format. Expected format: 'ST-XXX'");
+        if (id == null) {
+            throw new IllegalArgumentException("StationID cannot be null.");
+        }
+        if (!id.matches(DEFAULT_FORMAT)) {
+            throw new IllegalArgumentException("Invalid StationID format: '" + id + "'. Expected format: 'ST-XXX'");
         }
         this.id = id;
     }
+
 
     public String getId() {
         return id;
@@ -41,4 +45,9 @@ public final class StationID implements Serializable {
     public String toString() {
         return "StationID{" + "id='" + id + '\'' + '}';
     }
+
+    public static boolean isValid(String id) {
+        return id != null && id.matches(DEFAULT_FORMAT);
+    }
+
 }
