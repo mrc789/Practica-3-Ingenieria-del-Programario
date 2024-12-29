@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
 import java.net.ConnectException;
 import java.time.LocalDateTime;
-import java.util.logging.Logger;
 
 /**
  * Handler for the journey realization use case.
@@ -24,8 +23,6 @@ public class JourneyRealizeHandler {
     private PMVehicle currentVehicle;
     private JourneyService currentJourney;
 
-    private static final Logger logger = Logger.getLogger(JourneyRealizeHandler.class.getName());
-
     // Constructor
     public JourneyRealizeHandler(Server server, QRDecoder qrDecoder) {
         this.server = server;
@@ -35,9 +32,6 @@ public class JourneyRealizeHandler {
     // User interface input events
     public void scanQR(BufferedImage qrImage)
             throws ConnectException, InvalidPairingArgsException, CorruptedImgException, PMVNotAvailException, ProceduralException {
-        if (qrImage == null) {
-            throw new IllegalArgumentException("QR image cannot be null.");
-        }
         if (currentVehicle != null) {
             throw new ProceduralException("A vehicle is already paired. Please unpair before scanning a new QR code.");
         }
@@ -66,7 +60,7 @@ public class JourneyRealizeHandler {
     public void unPairVehicle()
             throws ConnectException, InvalidPairingArgsException, PairingNotFoundException, ProceduralException {
         if (currentVehicle == null) {
-            throw new ProceduralException("No vehicle is currently paired to unpair. Ensure `scanQR` was called.");
+            throw new ProceduralException("No vehicle is currently paired to unpair.");
         }
 
         // Unpair the vehicle
@@ -87,10 +81,7 @@ public class JourneyRealizeHandler {
 
     // Input events from the unbonded Bluetooth channel
     public void broadcastStationID(StationID stID) throws ConnectException {
-        if (stID == null) {
-            throw new IllegalArgumentException("Station ID cannot be null.");
-        }
-        logger.info("Broadcasting station ID: " + stID.getId());
+        System.out.println("Broadcasting station ID: " + stID.getId());
     }
 
     // Input events from the Arduino microcontroller channel
@@ -100,7 +91,7 @@ public class JourneyRealizeHandler {
         }
 
         currentVehicle.setUnderWay();
-        logger.info("Driving started for vehicle: " + currentVehicle.getVehicleID().getId());
+        System.out.println("Driving started for vehicle: " + currentVehicle.getVehicleID().getId());
     }
 
     public void stopDriving() throws ConnectException, ProceduralException {
@@ -109,21 +100,17 @@ public class JourneyRealizeHandler {
         }
 
         currentVehicle.setNotAvailb();
-        logger.info("Driving stopped for vehicle: " + currentVehicle.getVehicleID().getId());
+        System.out.println("Driving stopped for vehicle: " + currentVehicle.getVehicleID().getId());
     }
 
     // Internal operations
     private void calculateValues(GeographicPoint gP, LocalDateTime date) {
-        if (gP == null || date == null) {
-            throw new IllegalArgumentException("GeographicPoint and date cannot be null.");
-        }
-        logger.info("Calculating values...");
+        // Example calculation logic
+        System.out.println("Calculating values...");
     }
 
     private void calculateImport(float dis, int dur, float avSp, LocalDateTime date) {
-        if (date == null) {
-            throw new IllegalArgumentException("Date cannot be null.");
-        }
-        logger.info("Calculating import...");
+        // Example calculation logic
+        System.out.println("Calculating import...");
     }
 }
