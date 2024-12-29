@@ -5,6 +5,8 @@ import exceptions.*;
 import services.*;
 import services.smartfeatures.*;
 
+import java.net.ConnectException;
+
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;
