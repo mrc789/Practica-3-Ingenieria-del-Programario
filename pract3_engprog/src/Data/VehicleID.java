@@ -15,10 +15,13 @@ public final class VehicleID {
         this.id = id;
     }
 
+    // Método getter para Id
     public String getId() {
         return id;
     }
 
+
+    // Método equals para comparar objetos VehicleID
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,6 +30,7 @@ public final class VehicleID {
         return id.equals(vehicleID.id);
     }
 
+    // Método para generar un hash único basado en el id
     @Override
     public int hashCode() {
         return Objects.hash(id);
